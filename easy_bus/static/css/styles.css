@@ -1,0 +1,274 @@
+
+    .login-container {
+    width: 400px;
+    margin: 90px auto;
+  }
+
+  .card {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .user-name{
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  h2{
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .form-login {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  #textbox{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+  }
+  
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="radio"]:focus {
+    outline: none;
+    border-color: #4CAF50;
+  }
+  
+  .login-button{
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .bottom-links {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .bottom-links a {
+    color: #555;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  .bottom-links a:hover {
+    text-decoration: underline;
+  }
+
+  .main-container{
+    padding: 40px;
+    width: 25%;
+  }
+
+  .feedback-container{
+    padding: 40px;
+    width: 25%;
+  }
+
+  .search-bus {
+    padding: 40px;
+  }
+  
+  .search-bus h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  .search-form {
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+  .search-results {
+    margin-top: 40px;
+    font-size: 34px;
+  }
+  
+  .search-results h3 {
+    margin-top: 0;
+  }
+  
+  .search-results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .search-results li {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 338%;
+    font-size: 18px;
+  }
+  
+  .search-results h4 {
+    margin-top: 0;
+  }
+
+  .search-bus button{
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+.complaint-container{
+  margin-left: 41px;
+}
+
+/* styles.css */
+.profile {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin-left: 550px;
+  margin-top: 130px;
+}
+
+.user-profile {
+  font-size: 86px;
+  color: #000000;
+}
+
+
+.user-info {
+  margin-left: 20px;
+}
+
+.username {
+  font-size: 24px;
+}
+
+.email {
+  font-size: 16px;
+}
+
+.place-card {
+  background-color: #f5f5f5;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.place-card h2 {
+  margin-top: 0;
+}
+
+.place-card p {
+  margin: 10px 0;
+}
+
+.confirmation-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-methods {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.payment-method {
+  display: inline-block;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.payment-method:hover {
+  background-color: #ebebeb;
+}
+
+.payment-method.selected {
+  border-color: #333;
+  background-color: #f5f5f5;
+}
+
+
+.booking-details {
+  margin-top: 40px;
+}
+
+.payment-details {
+  margin-top: 40px;
+}
+
+.confirmation-message {
+  margin-top: 40px;
+  text-align: center;
+  color: #333;
+  font-weight: bold;
+}
+
+.support-message {
+  margin-top: 40px;
+  text-align: center;
+  color: #666;
+}
+
+.booking-list {
+  margin-top: 40px;
+}
+
+.booking-item {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.booking-item h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.booking-item p {
+  color: #666;
+}
+
+.booking-item .status {
+  color: #44bb44;
+  font-weight: bold;
+}
+
+.no-bookings {
+  text-align: center;
+  color: #666;
+}

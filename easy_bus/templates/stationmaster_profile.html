@@ -1,0 +1,17 @@
+{% include 'stationmaster_header.html' %}
+  <div class="profile">
+    <div class="user-profile">
+      <i class="fas fa-user-circle"></i>
+    </div>    
+    <div class="user-info">
+      <h2 class="username">{{cust.first_name}} {{cust.last_name}}</h1>
+      <p class="email"><b>Email:</b> {{cust.email}}</p>
+      <p class="email"><b>Username:</b> {{cust.login.username}}</p>
+      <p class="email"><b>Phone:</b> {{cust.phone}}</p>
+      <p class="email"><b>Gender:</b> {{cust.gender}}</p>
+      <p class="email"><b>Date of Birth:</b> {{cust.dob}}</p>
+      <!-- Additional user information -->
+    </div>
+  </div>
+
+{% include 'footer.html' %}

@@ -1,0 +1,166 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .menu {
+    list-style: none;
+    margin-left: 188px;
+    padding: 0;
+    display: flex;
+  }
+  
+  .menu li {
+    margin-right: 20px;
+  }
+  
+  .menu li a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    color: red;
+  }
+  
+  .menu li a:hover{
+    color: green;
+  }
+
+  h1 {
+    text-align: center;
+  }
+  
+  h2 {
+    margin-top: 20px;
+  }
+  
+  .station-info {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 12px 12px 107px -298px;
+    width: 171%;
+  }
+  
+  .bus-schedule {
+    margin-top: 20px;
+  }
+  
+  .notifications {
+    margin-top: 20px;
+  }
+  
+  .notification-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .notification-item h3 {
+    margin-top: 0;
+  }
+  
+  .notification-item p {
+    margin-bottom: 5px;
+  }
+  
+  .notification-item .date {
+    font-size: 0.8em;
+    color: #777;
+  }
+  
+  .station-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .reserve-home{
+    width: 120%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  thead th {
+    background-color: #f5f5f5;
+  }
+  
+  tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .reservation-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+
+  .profile {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-left: 253px;
+    margin-top: 44px
+  }
+  
+  .user-profile {
+    font-size: 86px;
+    color: #000000;
+  }
+  
+  
+  .user-info {
+    margin-left: 20px;
+  }
+  
+  .username {
+    font-size: 24px;
+  }
+  
+  .email {
+    font-size: 16px;
+  }
+
+  .add-route form {
+    margin-top: 20px;
+  }
+  
+  #registration_number1{
+    width: 3%;
+  }
+
+  #registration_number2{
+    width: 3%;
+  }
+
+  #registration_number3{
+    width: 6%;
+  }
+
+  .add-route label,
+  .add-route input,
+  .add-route button {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .add-route button {
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .add-route button:hover {
+    background-color: #45a049;
+  }
+
+  

@@ -1,0 +1,149 @@
+{% include 'stationmaster_header.html' %}
+<div class="station-info">
+    <h2>Manage Trips</h2>
+    {%if obj%}
+        <form id="add-trip-form" method="POST">
+          <label for="bus_name">Bus Name:</label>
+            <select name="bus_name" id="">
+              <option value="" selected disabled>Select Bus</option>
+              {% for i in bus%}
+                <option value="{{i.id}}">{{i.bus_name}}   RegNo:({{i.registration_number}})    Seats:{{i.default_seat_count}}</option>
+              {%endfor%}
+            </select> <br><br>
+          <label for="route">Route:</label>
+          <select id="route" name="route" required>
+            <option value="" selected disabled>Select Route</option>
+            <!-- Loop through routes and populate select options -->
+            {% for route in routes %}
+            <option value="{{ route.id }}">{{ route.route_name }}</option>
+            {% endfor %}
+          </select>
+          <br><br>
+          <label for="trip_date">Trip Date:</label>
+          <input type="date" name="trip_date" id="trip_date" value="{{ obj.trip_date }}" required>
+          <br><br>
+          <label for="starting_time">Starting Time:</label>
+          <input type="time" name="starting_time" id="starting_time" value="{{ obj.starting_time }}" required>
+          <br><br>
+          <label for="ending_time">Ending Time:</label>
+          <input type="time" name="ending_time" id="ending_time" value="{{ obj.ending_time }}" required>
+          <br><br>
+          <button type="submit">Save</button>
+        </form>
+    {%else%}
+  <div class="trip-list">
+    <table class='station-table'> 
+      <thead>
+        <tr>
+          <th>Trip ID</th>
+          <th>Bus Name</th>
+          <th>Route</th>
+          <th>Trip Date</th>
+          <th>Starting Time</th>
+          <th>Ending Time</th>
+          <th>In Between Stops and Fares</th>
+          <th>Status </th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through the trips and populate the table rows -->
+        {% for i in trip%}
+        <tr>
+          <td>{{ i.id }}</td>
+          <td>{{ i.bus.bus_name }} {{ i.bus.registration_number }} </td>
+          <td>{{ i.route.route_name }}</td>
+          <td>{{i.trip_date}}</td>
+          <td>{{ i.starting_time }}</td>
+          <td>{{ i.ending_time }}</td>
+          <td>{% for j in i.stops_set.all%}
+                {{j.place.place_name}}- {{j.time}} -- Rs. {{j.fare_rate}}<br>
+                {%endfor%}
+          </td>
+          <td>{{i.trip_status}} </td>
+          <td>
+            {%if i.trip_status == 'scheduled'%}
+                  <a href="stationmaster_trip_status/{{i.id}}">Departed</a>
+            {%elif i.trip_status == 'departed'%}
+                  <a href="stationmaster_trip_status/{{i.id}}">Completed</a>
+            {%endif%}
+            {%if i.trip_status != 'completed'%}
+                    &nbsp;&nbsp;<a href="stationmaster_trips/{{i.id}}">Edit</a>
+            {%endif%}
+            &nbsp;&nbsp;<a href="delete_stationmaster_trips/{{i.id}}">Delete</a>
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+  <div class="container">
+    <h2>Add Trip</h2>
+    <form method="POST">
+      <label for="bus_name">Bus Name:</label>
+        <select name="bus_name" id="" required>
+          <option value="" selected disabled>Select Bus</option>
+          {% for i in bus%}
+            <option value="{{i.id}}">{{i.bus_name}}   RegNo:({{i.registration_number}})    Seats:{{i.default_seat_count}}</option>
+          {%endfor%}
+        </select> <br><br>
+      <label for="route">Route:</label>
+      <select id="route" name="route" required>
+        <option value="" selected disabled>Select Route</option>
+        <!-- Loop through routes and populate select options -->
+        {% for route in routes %}
+        <option value="{{ route.id }}">{{ route.route_name }}</option>
+        {% endfor %}
+      </select>
+      <br><br>
+      <label for="trip_date">Trip Date:</label>
+      <input type="date" name="trip_date" id="date" required> <br><br>  
+      <label for="starting_time">Starting Time:</label>
+      <input type="time" name="starting_time" id="time" required> <br><br>
+      <label for="ending_time">Ending Time:</label>
+      <input type="time" name="ending_time" id="time" required> <br><br>
+      <label for="num_stops">Number of Stops:</label>
+      <input type="number" name="num_stops" id="num_stops"  min="1" max="30" required>
+      <p> Note: (First stop fare rate should be set 0, other fare rate should be entered based on rate from the first stop. Stops should be also include source and destination stops) </p>
+      <div id="stops-container"></div> <br>
+      <button type="submit">Add Trip</button>
+    </form>
+  </div>
+  {%endif%}
+</div>
+
+<script>
+  function generateStops(numStops) {
+    var stopsContainer = $('#stops-container');
+    stopsContainer.empty();
+  
+    for (var i = 1; i <= numStops; i++) {
+      var selectHtml = '<br><label for="stop_' + i + '">Stop ' + i + ':</label>' +
+        '<select name="stop_' + i + '" required>' +
+        '<option value="" selected disabled>Select Stop</option>' +
+        '{% for stop in stops %}' +
+        '<option value="{{ stop.id }}">{{ stop.place_name }}</option>' +
+        '{% endfor %}' +
+        '</select>' +
+        '<label for="time_' + i + '"> Time:</label>' +
+        '<input type="time" name="time_' + i + '" required>' +
+        '<label for="fare_' + i + '"> Fare Rate:</label>' +
+        '<input type="number" name="fare_' + i + '" min="0" max="999" required> <br><br>';
+      stopsContainer.append(selectHtml);
+    }
+  }
+  
+
+  $(document).ready(function() {
+    $('#num_stops').on('input', function() {
+      var numStops = parseInt($(this).val());
+      var stopsContainer = $('#stops-container');
+      stopsContainer.empty();
+  
+      generateStops(numStops);
+    });
+  });
+  
+      
+</script>
+{% include 'footer.html'%}

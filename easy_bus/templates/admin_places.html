@@ -1,0 +1,116 @@
+{% include 'admin_header.html' %}
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD3MPnSnyWwNmpnVEFkaddVvy_GWtxSejs&sensor=false"></script>
+        <script type="text/javascript">
+            // window.onload = function () {
+            function myFunction() {
+                var mapOptions = {
+                    center: new google.maps.LatLng(9.9763482, 76.286272),
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var infoWindow = new google.maps.InfoWindow();
+                var latlngbounds = new google.maps.LatLngBounds();
+                var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                google.maps.event.addListener(map, 'click', function (e) {
+                    alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+                    document.getElementById('slati').value = e.latLng.lat();
+                    document.getElementById('elongi').value = e.latLng.lng();
+
+
+                });
+            }
+</script>
+
+
+<br>
+<h2 align="center">Add New Place</h2>
+<br>
+{% if obj %}
+<div class="addplaces">
+    <form method="post" class="add-otherplace">
+      <table>
+          <tr>
+              <td><label for="placeName">Place Name:</label></td>
+              <td><input type="text" id="placeName" name="placeName" value="{{obj.place_name}}"></td>
+          </tr>
+          <tr>
+              <td></td>
+              <td><a onclick="myFunction();">View On Map</a></td>
+          </tr>
+          <tr>
+              <td>Latitude</td>
+              <td><input type="text" name="lati" id="slati" value="{{obj.latitude}}" required></td>
+          </tr>
+          <tr>
+              <td>Longitude</td>
+              <td><input type="text" name="longi"  id="elongi" value="{{obj.longitude}}" required></td>
+          </tr>
+          <tr>
+              <td></td>
+              <td><button type="submit">Update Place</button>
+          </tr>
+  
+      </table>
+    </form>
+  </div>
+{%else%}
+<div class="addplaces">
+  <form method="post">
+    <table>
+        <tr>
+            <td><label for="placeName">Place Name:</label></td>
+            <td><input type="text" id="placeName" name="placeName" required></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><a onclick="myFunction();">View On Map</a></td>
+        </tr>
+        <tr>
+            <td>Latitude</td>
+            <td><input type="text" name="lati" id="slati" required></td>
+        </tr>
+        <tr>
+            <td>Longitude</td>
+            <td><input type="text" name="longi"  id="elongi" required></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit">Add Place</button>
+        </tr>
+
+    </table>
+    </form>
+</div>
+{%endif%}
+    <br>
+  
+
+  <div id="dvMap" style="width: 600px; height: 400px" class="mapInterface"></div>
+  <br>
+  <h2 align="center">Places List</h2>
+  <table align="center">
+    <thead>
+      <tr>
+        <th>Place Name</th>
+        <th>View Location on Map</th>
+        <th>Actions</th>
+        <td></td>
+
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Populate the table rows with other places data -->
+      {% for i in place %}
+      <tr>
+        <td>{{i.place_name}}</td>
+        <td><a class="btn btn-success" href="http://www.google.com/maps?q={{ i.latitude }},{{ i.longitude }}">Location</a></td>
+        <td>
+          <a href="updt_places/{{i.id}}">Edit</a>
+          <a href="delete_places/{{i.id}}">Delete</a>
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+{% include 'footer.html' %}

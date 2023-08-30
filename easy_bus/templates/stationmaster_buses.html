@@ -1,0 +1,153 @@
+{% include 'stationmaster_header.html' %}
+
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD3MPnSnyWwNmpnVEFkaddVvy_GWtxSejs&sensor=false"></script>
+        <script type="text/javascript">
+            // window.onload = function () {
+            function myFunction() {
+                var mapOptions = {
+                    center: new google.maps.LatLng(9.9763482, 76.286272),
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var infoWindow = new google.maps.InfoWindow();
+                var latlngbounds = new google.maps.LatLngBounds();
+                var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                google.maps.event.addListener(map, 'click', function (e) {
+                    alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+                    document.getElementById('slati').value = e.latLng.lat();
+                    document.getElementById('elongi').value = e.latLng.lng();
+
+
+                });
+            }
+        </script>
+        <style type="text/css">
+        </style>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD3MPnSnyWwNmpnVEFkaddVvy_GWtxSejs&sensor=false"></script>
+        <script type="text/javascript">
+            // window.onload = function () {
+            function myfun() {
+                var mapOptions = {
+                    center: new google.maps.LatLng(9.9763482, 76.286272),
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var infoWindow = new google.maps.InfoWindow();
+                var latlngbounds = new google.maps.LatLngBounds();
+                var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                google.maps.event.addListener(map, 'click', function (e) {
+                    alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+                    document.getElementById('slati1').value = e.latLng.lat();
+                    document.getElementById('elongi1').value = e.latLng.lng();
+
+
+                });
+            }
+        </script>
+
+
+    {%if obj%}
+      <form  method="POST">
+        <div class="form-group">
+          <label for="bus_name">Bus Name:</label>
+          <select name="bus_name" id="" required>
+            <option value="" selected disabled>{{obj.bus_name}}</option>
+                <option value="FAST PASSENGER">Fast Passenger</option>
+                <option value="ORDINARY">Ordinary</option>
+                <option value="SUPER DELUXE"> Super Deluxe</option>
+          </select> <br>  <br>
+        </div>
+        <div class="form-group">
+          <label for="registration_number">Registration Number:</label>
+          KL-<input type="text" id="registration_number" name="registration_number" value="{{obj.registration_number}}" >  (eg KL-03-F-8653)<br> <br> 
+        </div>
+        <div class="form-group">
+          <label for="seating_capacity">Seating Capacity:</label>
+          <input type="number" id="seating_capacity" name="seating_capacity" min="1" max="80" value="{{obj.default_seat_count}}"> <br> <br>
+        </div>
+        <div class="form-group">
+          <label for="fare_rate">Fare Rate:</label>
+          <input type="text" id="fare_rate" name="fare_rate" minlength="2" maxlength="4" value="{{obj.fare_rate}}" pattern="[0-9]" required> <br> <br>
+        </div>
+        <button type="submit">Save</button>
+      
+      </form>
+    {%else%}
+<div class="station-info">
+    <h2>Manage Buses</h2>
+  <table class='station-table'>
+    <thead>
+      <tr>
+        <th>Bus Name</th>
+        <th>Registration Number</th>
+        <th>Seating Capacity</th>
+        <th>Fare Rate</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for bus in buses %}
+      <tr>
+        <td>{{ bus.bus_name }}</td>
+        <td>{{ bus.registration_number }}</td>
+        <td>{{ bus.default_seat_count }}</td>
+        <td>Rs.{{bus.fare_rate}}</td>
+        <td>
+          <a href="updt_stationmaster_buses/{{bus.id}}">Edit</a>
+          <a href="delete_stationmaster_buses/{{bus.id}}">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+<center>
+  
+  <h2>Add New Bus</h2>
+  <form  method="POST">
+    <div class="form-group">
+      <label for="bus_name">Bus Name:</label>
+      <select name="bus_name" id="">
+        <option value="" selected disabled>Select Bus Name</option>
+            <option value="FAST PASSENGER">Fast Passenger</option>
+            <option value="ORDINARY">Ordinary</option>
+            <option value="SUPER DELUXE"> Super Deluxe</option>
+      </select> <br>  <br>
+    </div>
+    <div class="form-group">
+      <label for="registration_number">Registration Number:</label>
+      KL-<input type="text" id="registration_number1" name="registration_number1" minlength="2" maxlength="2" required > -
+         <input type="text" id="registration_number2" name="registration_number2" minlength="1" maxlength="2" required > -
+         <input type="text" id="registration_number3" name="registration_number3" minlength="4" maxlength="4" required > (eg KL-03-F-8653)<br> <br> 
+    </div>
+    <div class="form-group">
+      <label for="seating_capacity">Seating Capacity:</label>
+      <input type="number" id="seating_capacity" name="seating_capacity" min="1" max="80" required> <br> <br>
+    </div>
+    <div class="form-group">
+      <label for="fare_rate">Fare Rate:</label>
+      <input type="text" id="fare_rate" name="fare_rate" minlength="2" maxlength="4" required> <br> <br>
+    </div>
+
+     <div >
+          <a onclick="myFunction();">View Map</a>
+        </div>
+        
+        <div class="form-group">
+          <label for="fare_rate">Latitude:</label>
+          <td><input type="text" name="lati" id="slati" readonly='true' required></td>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="fare_rate">Logitude:</label>
+          <td><input type="text" name="longi"  id="elongi" readonly='true' required></td>
+        </div> <br>
+    <button type="submit">Add Bus</button>
+      <div id="dvMap" style="width: 600px; height: 400px"></div>
+  </form>
+</center>
+  {%endif%}
+</div>
+
+
+{% include 'footer.html' %}

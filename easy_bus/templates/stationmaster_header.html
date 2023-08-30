@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bus Station - Station Master</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/station_styles.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Bus Station - Station Master Dashboard</h1>
+        <h2 align="center"> Welcome {{name}} </h2>
+        <ul class="menu">
+            <li><a href="/stationmaster">Home</a></li>
+            <li><a href="/stationmaster_profile">My Profile</a></li>
+            <li><a href="/stationmaster_buses">Manage Buses</a></li>
+            <li><a href="/stationmaster_routes">Manage Routes</a></li>
+            <li><a href="/stationmaster_trips">Manage Trips</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>  

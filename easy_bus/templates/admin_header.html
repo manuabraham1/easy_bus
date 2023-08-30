@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/admin_styles.css'%}"></head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<body>
+    <header>
+        <nav>
+          <div class="logo">
+            <a href="adminhome"><img src="/static/images/logo.png"></a>
+            <h1>Easy Bus</h1>
+          </div>
+          <ul class="menu">
+            <li><a href="/adminhome">Home</a></li>
+            <li><a href="/admin_buses">View Buses</a></li>
+            <li><a href="/admincustomers">View Customers</a></li>
+            <li><a href="/admin_places">Manage Places</a></li>
+            <li><a href="/admin_otherplaces">Manage Other Places</a></li>
+            <li><a href="/admin_stations">Manage Stations</a></li>
+            <li><a href="/admin_employee">Manage Employees</a></li>
+            <li><a href="/admincomplaint">Complaints</a></li>
+            {% comment %} <li><a href="#">Reports</a></li> {% endcomment %}
+            <li><a href="logout">Logout</a></li>
+          </ul>
+        </nav>
+    </header>

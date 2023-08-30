@@ -1,0 +1,72 @@
+{% include 'user_header.html'%}
+<div class="container">
+    <h2>Select Number of Seats</h2>
+    <p><b>Bus:</b> {{ fstop.trip.bus.bus_name }} ({{ fstop.trip.bus.registration_number }})</p>
+    <p><b>Route:</b> ({{ fstop.trip.route.route_name }})</p>
+            <p><b>Stops & Time of Trip:</b> {% for i in trp%}
+                        {{i.place.place_name}} {{i.time}}, 
+                        {%endfor%}
+            </p>
+    <p><b>From Selected Place:</b> {{fstop.place.place_name}} &nbsp;&nbsp;&nbsp;      Time:{{fstop.time}}</p>
+    <p> <b>To Selected Place:</b> {{tstop.place.place_name}}  &nbsp;&nbsp;&nbsp;    Time:{{tstop.time}}</p>
+    <p><b>Duration: </b> {{hour}}hours and {{min}}minute </p>
+    <p><b>Fare Rate Per Seat:</b> {{fare_rate}}</p>
+    <form action="user_bus_seatbooking" method="POST">
+      <b>Number of Seats:</b>
+      <select id="seat_count" name="seat_count">
+        {%if seat_count > 7 %}
+            <option value="" selected disabled>Select Number of Seats</option>
+            <option value="1">1 Seat</option>
+            <option value="2">2 Seats</option>
+            <option value="3">3 Seats</option>
+            <option value="4">4 Seats</option>
+            <option value="5">5 Seats</option>
+            <option value="6">6 Seats</option>
+            <option value="7">7 Seats</option>
+        {%elif seat_count < 7 %}
+            {%if seat_count == 6%}
+                <option value="" selected disabled>Select Number of Seats</option>
+                <option value="1">1 Seat</option>
+                <option value="2">2 Seats</option>
+                <option value="3">3 Seats</option>
+                <option value="4">4 Seats</option>
+                <option value="5">5 Seats</option>
+                <option value="6">6 Seats</option>
+            {%elif seat_count == 5%}
+                <option value="" selected disabled>Select Number of Seats</option>
+                <option value="1">1 Seat</option>
+                <option value="2">2 Seats</option>
+                <option value="3">3 Seats</option>
+                <option value="4">4 Seats</option>
+                <option value="5">5 Seats</option>
+            {%elif seat_count == 4%}
+                <option value="" selected disabled>Select Number of Seats</option>
+                <option value="1">1 Seat</option>
+                <option value="2">2 Seats</option>
+                <option value="3">3 Seats</option>
+                <option value="4">4 Seats</option>
+            {%elif seat_count == 3%}
+                <option value="" selected disabled>Select Number of Seats</option>
+                <option value="1">1 Seat</option>
+                <option value="2">2 Seats</option>
+                <option value="3">3 Seats</option>
+            {%elif seat_count == 2%}
+                <option value="" selected disabled>Select Number of Seats</option>
+                <option value="1">1 Seat</option>
+                <option value="2">2 Seats</option>
+            {%elif seat_count == 1%}
+                <option value="" selected disabled>Select Number of Seats</option>
+                <option value="1">1 Seat</option>
+            {%endif%}
+        {%endif%}
+        <!-- Add more options as needed -->
+      </select>   &nbsp;<font color="green"> <b>Discount: If you select 7 seats, 1 seat is free of cost</b></font>
+      <input type="hidden" name="base_fare" value="{{fare_rate}}">
+      <input type="hidden" name="from_stop" value="{{fstop.id}}">
+      <input type="hidden" name="to_stop" value="{{tstop.id}}">
+      <input type="hidden" name="trip_id" value="{{tstop.trip_id}}">
+      <br><br>
+      <button type="submit">Book Now</button>
+    </form>
+</div>
+{% include 'footer.html' %}

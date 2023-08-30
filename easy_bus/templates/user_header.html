@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/header_styles.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/styles.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+    <header>
+        <div class="container">
+          <div class="logo-container">
+            <a href="userhome" class="logo-link"> <img src="{%static '/images/logo.png'%}" alt="" width="150" height="150" style="display: inline-block;" class="logo-img">
+            <h1 class="logo" style="color: white;">EASY BUS</h1> </a>
+          </div>
+          <div class="link-container">
+            <nav id="user-link">
+              <ul>
+                <li><a href="/userhome">HOME</a></li>
+                <li><a href="/user_otherplaces"> NEARBY PLACES</a></li>
+                <li><a href="/user_booking_history"> BOOKING HISTORY</a></li>
+                <li><a href="/usercomplaint"> COMPLAINTS/FEEDBACK</a></li>
+                <li><div class="dropdown">
+                    <button class="dropbtn">MY ACCOUNT</button>
+                     <div class="dropdown-content">
+                        <a href="userprofile">Profile</a>
+                        <a href="#">Option 2</a>
+                        <a href="logout">Logout</a>
+                     </div>
+                    </div></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>

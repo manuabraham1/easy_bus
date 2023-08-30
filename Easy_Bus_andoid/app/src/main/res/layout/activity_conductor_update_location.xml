@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Conductor_update_location">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/wal"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Location and Seat"
+                android:textStyle="italic|bold"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/textView1x"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:textSize="20dp"
+                android:layout_marginLeft="-50dp"
+                android:text="Available Seat:"
+                android:textStyle="italic|bold"
+                android:gravity="center"
+                />
+            <EditText
+                android:id="@+id/seat"
+                android:layout_width="260dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:background="@drawable/customtext"
+                android:gravity="center"
+                android:textStyle="italic"
+                android:inputType="textPersonName"
+                android:hint="Update Seat" />
+
+
+            <TextView
+                android:id="@+id/textView1xx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:textSize="20dp"
+                android:layout_marginLeft="-50dp"
+                android:text="Bus Fair:"
+                android:textStyle="italic|bold"
+                android:gravity="center"
+                />
+
+                <EditText
+                    android:id="@+id/date"
+                    android:layout_width="260dp"
+                    android:layout_height="50dp"
+                    android:ems="20"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:enabled="false"
+                    android:background="@drawable/customtext"
+                    android:gravity="center"
+                    android:inputType="textPersonName"
+                    android:hint="Date and Time" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/ubtn"
+                android:layout_width="300dp"
+
+                android:layout_height="70dp"
+                android:background="@drawable/loginbtn"
+                android:textStyle="italic"
+                android:layout_marginTop="20dp"
+                android:text="Update" />
+        </LinearLayout>
+
+</LinearLayout>

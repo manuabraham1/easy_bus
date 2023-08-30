@@ -1,0 +1,66 @@
+{% load mathfilters %}
+{% include 'public_header.html' %}
+
+    <section class="main-container">
+      {% if s%}
+          <div class="search-results">
+            <!-- Display search results here -->
+            <h3>Search Results</h3>
+            <ul>
+              {%for i in trip%}
+              <li>
+                <h4>{{i.bus.bus_name}} ({{i.bus.registration_number}})</h4>
+                {%for s in stop%}
+                  
+                  {%if s.place == og and s.trip == i%}
+                        
+                    <p>Departure: {{s.place.place_name}}--{{ s.time }}</p>
+                    
+                  {%elif s.place == dt and s.trip == i%}
+                
+                    <p>Arrival: {{s.place.place_name}}--{{ s.time }}</p>
+                  
+                  {%endif%}  
+                {%endfor%} 
+                
+                <p>Seat Available: {{i.bus.seat_count}}</p>
+                <p>Fare Rate: Rs. {{i.fare_difference|add:i.bus.fare_rate}}</p>
+                    
+              </li>
+                
+            {%endfor%}
+            </ul>
+          </div>
+        {% else %}
+        <h2>Find Buses Between Stops</h3>
+        <form id="searchForm" method="post">
+          <div class="form-login">
+            <label for="origin">Origin:</label>
+            <input type="text"  name="origin" list="origin" value="{{origin}}" required>
+              <datalist id="origin">
+                {% for i in place %}
+                <option value="{{i.id}}"> {{i.place_name}}</option>
+                {% endfor %}
+              </datalist>
+          </div>
+          <div class="form-login">
+            <label for="destination">Destination:</label>
+            <input type="text" name="destination" list="destination" value="{{destination}}" required>
+            <datalist id="destination">
+              {% for i in place %}
+              <option value="{{i.id}}"> {{i.place_name}}</option>
+              {% endfor %}
+            </datalist>
+          </div>
+          <div class="form-login">
+            <label for="date">Date:</label>
+            <input type="date" id="busdate" name="busdate" required>
+          </div>
+          <div class="form-login">
+            <button type="submit" class="login-button"> Search Bus</button>
+          </div>
+        </form>
+        {%endif%}
+      </section>
+
+{% include 'footer.html' %}

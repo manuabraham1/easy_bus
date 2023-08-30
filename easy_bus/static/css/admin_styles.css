@@ -1,0 +1,236 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background-color: #4CAF50;
+    padding: 20px;
+    color: #fff;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    width: 90px;
+    height: 90px;
+    margin-right: 10px;
+  }
+  
+  .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .menu li {
+    margin-right: 20px;
+  }
+  
+  .menu li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .dashboard {
+    padding: 40px;
+  }
+  
+  h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  
+  .stat-item {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .stat-item h3 {
+    margin-top: 0;
+  }
+  
+  .recent-bookings {
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  .recent-bookings table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .recent-bookings th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .recent-bookings th {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+  
+
+  .complaint-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .complaint-list {
+    margin-bottom: 20px;
+  }
+  
+  .reply-form {
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  .reply-form h2 {
+    margin-top: 0;
+  }
+  
+  .reply-form textarea {
+    width: 100%;
+    height: 100px;
+    resize: vertical;
+  }
+  
+  .reply-form button {
+    margin-top: 10px;
+  }
+  
+  .station-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  thead th {
+    background-color: #f5f5f5;
+  }
+  
+  tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    float: left;
+    margin-bottom: 10px;
+  }
+  
+  .add-otherplace input[type="text"] {
+    width: 300px;
+    padding: 5px;
+  }
+  
+  button[type="submit"] {
+    padding: 10px 20px;
+  }
+  
+
+
+  .addplaces{
+    margin-left: 5px;
+    float: left;
+    width: 50%;
+  }
+
+  .mapInterface{
+    margin-top: -37px;
+  }
+
+  .employee-page {
+    max-width: 971px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .position-selection {
+    margin-bottom: 20px;
+  }
+  
+  .position-selection label {
+    margin-right: 10px;
+  }
+  
+  .content {
+    display: none;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .add-employee-form {
+    margin-bottom: 20px;
+  }
+  
+  .add-employee-form input[type="text"][type="email"][type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .employee-list {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .employee-list caption {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .employee-list th,
+  .employee-list td {
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .employee-list th {
+    background-color: #f0f0f0;
+  }
+  
+  .employee-list td.actions {
+    text-align: center;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  #add-station-form{
+    margin-top: 60px;
+    margin-left: 645px;
+  }

@@ -1,0 +1,148 @@
+{% include 'admin_header.html' %}
+
+<div class="employee-page">
+    <h1>Employee Page</h1>
+
+    {% if obj%}
+    <form class="add-employee-form" method="post">
+        <h2>Add Station Master Employee</h2>
+        <input type="text" placeholder="First Name" name="fname" value="{{obj.first_name}}" required>
+        <input type="text" placeholder="Last Name" name="lname" value="{{obj.last_name}}" required> <br> <br>
+        Date of Birth: <input type="date" name="dob" required><br><br>
+        Gender:  <input type="radio" name="gender" value="Male" required> Male <input type="radio" name="gender" value="Female">Female <br> <br>
+        <input type="email" placeholder="Email" name="email" value="{{obj.email}}" required> <br><br>
+        <input type="text" placeholder="Phone No." name="phone" value="{{obj.phone}}" required> <br><br>
+        <input type="text" name="place" placeholder="Place" value="{{obj.place}}" required> <br><br>
+        <button type="submit" >Update</button>
+    </form>
+    {%else%}
+    <div class="position-selection">
+      <label for="position-select">Select Employee Position:</label>
+      <select id="position-select">
+        <option value="" selected disabled>Select Position</option>
+        <option value="station_master">Station Master</option>
+        <option value="conductor">Conductor</option>
+      </select>
+    </div>
+    
+    <div id="div1" class="content">
+        <form class="add-employee-form" method="post">
+            <h2>Add Station Master Employee</h2>
+            <input type="text" placeholder="First Name" name="fname" required>
+            <input type="text" placeholder="Last Name" name="lname" required> <br> <br>
+            Date of Birth: <input type="date" name="dob" required><br><br>
+            Gender:  <input type="radio" name="gender" value="Male" required> Male <input type="radio" name="gender" value="Female">Female <br> <br>
+            <input type="email" placeholder="Email" name="email" required> <br><br>
+            <input type="text" placeholder="Phone No." name="phone" pattern="[0-9]{10}" required> <br><br>
+            <input type="text" name="place" placeholder="Place" required> <br><br>
+            <button type="submit" name="add_submit">Add</button>
+        </form>
+        
+          <!-- Employee List -->
+          <table class="employee-list">
+            <caption>Employee List</caption>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Date of Birth</th>
+                <th>Email</th>
+                <th>Phone No.</th>
+                <th>Place</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Rows for displaying employee data will be dynamically added here -->
+              {%for i in emp%}
+                <tr>
+                    <td>{{i.first_name}} {{i.last_name}}</td>
+                    <td>{{i.gender}}</td>
+                    <td>{{i.dob}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.phone}}</td>
+                    <td>{{i.place}}</td>
+                    <td> <a href="updt_stationmaster_employee/{{i.id}}">Edit</a> <a href="delete_stationmaster_employee/{{i.id}}">Delete</a></td>
+                </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+    </div>
+    <div id="div2" class="content">
+        <form class="add-employee-form" method="post">
+            <h2>Add Conductor Employee</h2>
+            <input type="text" placeholder="First Name" name="fname" required>
+            <input type="text" placeholder="Last Name" name="lname" required> <br> <br>
+            Date of Birth: <input type="date" name="dob" required><br><br>
+            Gender:  <input type="radio" name="gender" value="Male" required> Male <input type="radio" name="gender" value="Female">Female <br> <br>
+            <input type="email" placeholder="Email" name="email" required> <br><br>
+            <input type="text" placeholder="Phone No." name="phone" pattern="[0-9]{10}" required> <br><br>
+            <input type="text" name="place" placeholder="Place" required> <br><br>
+            Select Bus: <select name="bus" id="">
+                    {%for i in buss%}
+                      <option value="{{i.id}}">{{i.bus_name}} {{i.registration_number}}</option>
+                    {%endfor%}
+                    </select> <br> <br>
+            <button type="submit" name="con_submit">Add</button>
+          </form>
+        
+          <!-- Employee List -->
+          <table class="employee-list">
+            <caption>Conductor List</caption>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Date of Birth</th>
+                <th>Email</th>
+                <th>Phone No.</th>
+                <th>Place</th>
+                <th>Bus Name</th>
+                <!-- <th>Actions</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Rows for displaying employee data will be dynamically added here -->
+              {%for i in con%}
+                <tr>
+                    <td>{{i.cfname}} {{i.clanme}}</td>
+                    <td>{{i.gender}}
+                    <td>{{i.cdob}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.cphone}}</td>
+                    <td>{{i.place}}</td>
+                    <td>{{i.bus.bus_name}} {{i.bus.registration_number}}</td>
+                    <!-- <td> <a href="updt_stationmaster_employee/{{i.id}}">Edit</a> <a href="delete_stationmaster_employee/{{i.id}}">Delete</a></td> -->
+                </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+    </div>
+    {%endif%}
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("position-select").addEventListener("change", function() {
+          var selectedOption = this.value;
+      
+          var div1 = document.getElementById("div1");
+          var div2 = document.getElementById("div2");
+      
+          // Hide all divs
+          div1.style.display = "none";
+          div2.style.display = "none";
+      
+          // Show the selected div
+          if (selectedOption === "station_master") {
+            div1.style.display = "block";
+          } else if (selectedOption === "conductor") {
+            div2.style.display = "block";
+          }
+        });
+      });
+      
+      
+      
+      
+</script>
+{% include 'footer.html' %}

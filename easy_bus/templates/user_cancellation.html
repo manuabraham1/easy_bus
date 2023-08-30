@@ -1,0 +1,15 @@
+{% include 'user_header.html' %}
+<div class="container">
+    <h1>Cancellation Successful</h1>
+    <p>Total Refundable Amount:{{totamt}}</p>
+    <p>Your booking has been successfully cancelled. Confirmation has been sented to your email</p>
+    <p>Thank you for using our service!</p>
+</div>
+
+<script>
+    // Set timer to redirect after 5 seconds (5000 milliseconds)
+    setTimeout(function() {
+      window.location.href = "/user_booking_history";
+    }, 8000); // 8000 ms = 8 seconds
+  </script>
+{%include 'footer.html'%}

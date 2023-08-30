@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/wal"
+    android:layout_height="match_parent"
+    tools:context=".Bus_home">
+
+
+
+
+    <TextView
+        android:id="@+id/mainhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome, User"
+        android:textColor="#000"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:textStyle="italic|bold"/>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content" >
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="40dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/product"
+                    android:layout_width="150dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/trip"
+                    android:layout_height="150dp"
+                     />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="#595757"
+                    android:layout_marginTop="-10dp"
+                    android:layout_height="wrap_content"
+                    android:text="View Trip" />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            app:cardCornerRadius="40dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+
+                <ImageButton
+                    android:id="@+id/file"
+                    android:layout_width="150dp"
+                    android:layout_margin="10dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/seat"
+                     />
+
+                <TextView
+                    android:id="@+id/filedown"
+                    android:layout_width="match_parent"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="#595757"
+                    android:layout_marginTop="-10dp"
+                    android:layout_height="wrap_content"
+                    android:text="Available Seat" />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </TableRow>
+
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content" >
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="40dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/btcom"
+                    android:layout_width="150dp"
+                    android:layout_margin="10dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/resrve"/>
+
+                <TextView
+                    android:id="@+id/cc"
+                    android:layout_width="match_parent"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="#595757"
+                    android:layout_marginTop="-10dp"
+                    android:layout_height="wrap_content"
+                    android:text="Reservation's" />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            app:cardCornerRadius="40dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/logout"
+                    android:layout_width="150dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/logout"
+                    android:layout_height="150dp"
+                   />
+
+                <TextView
+                    android:id="@+id/vvv"
+                    android:layout_width="match_parent"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="#595757"
+                    android:layout_marginTop="-10dp"
+                    android:layout_height="wrap_content"
+                    android:text="Logout" />
+
+            </LinearLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </TableRow>
+
+
+<!--    <TableRow-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:paddingLeft="100dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_height="wrap_content" >-->
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:foregroundGravity="center"-->
+<!--            app:cardCornerRadius="40dp"-->
+<!--            >-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:orientation="vertical">-->
+<!--                <ImageButton-->
+<!--                    android:id="@+id/logout"-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_margin="10dp"-->
+
+<!--                    android:background="@drawable/logout"-->
+<!--                    android:layout_height="150dp"-->
+<!--                    />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textViewxx"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:gravity="center"-->
+<!--                    android:textColor="#595757"-->
+<!--                    android:layout_marginTop="-10dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Logout" />-->
+
+<!--            </LinearLayout>-->
+
+
+<!--        </androidx.cardview.widget.CardView>-->
+
+<!--    </TableRow>-->
+
+
+</LinearLayout>

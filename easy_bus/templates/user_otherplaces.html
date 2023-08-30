@@ -1,0 +1,13 @@
+{% include 'user_header.html' %}
+
+<h1>Other Places</h1>
+
+    {% for i in places %}
+    <div class="place-card">
+        <h2>{{i.other_places_name}}</h2>
+        <p>Type: {{i.other_places_type}}</p>
+        <p><a class="btn btn-success" href="http://www.google.com/maps?q={{ i.latitude }},{{ i.longitude }}">View Location</a></p>
+    </div>
+    {%endfor%}
+
+{% include 'footer.html' %}

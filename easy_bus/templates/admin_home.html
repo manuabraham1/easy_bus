@@ -1,0 +1,58 @@
+{% include 'admin_header.html' %}
+
+  <section class="dashboard">
+    <h2>Admin Dashboard</h2>
+    <div class="stats">
+      <div class="stat-item">
+        <h3>Total Buses</h3>
+        <p>{{bus_count}}</p>
+      </div>
+      <div class="stat-item">
+        <h3>Total Bookings</h3>
+        <p>{{res_count}}</p>
+      </div>
+      <div class="stat-item">
+        <h3>Total Revenue</h3>
+        <p>Rs. {{total_sales}}</p>
+      </div>
+    </div>
+    <div class="recent-bookings">
+      <h3>Recent Bookings</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Booking ID</th>
+            <th>Booking Date</th>
+            <th>User</th>
+            <th>Bus</th>
+            <th>Route</th>
+            <th>Reservation Amount</th>
+            <th>Number of Seats </th>
+            <th>Payment Method </th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for i in res%}
+            <tr>
+              <td>{{i.id}}</td>
+              {%for p in i.payment_set.all%}
+                <td> {{p.payment_date}}</td>
+              {%endfor%}
+              <td>{{i.user.first_name}} {{i.user.last_name}}</td>
+              <td>{{i.trip.bus.bus_name}} ({{i.trip.bus.registration_number}})</td>
+              <td>{{i.from_stop.place.place_name}} - {{i.to_stop.place.place_name}}</td>
+              <td>{{i.reservation_amount}} </td>
+              <td>{{i.no_of_seats}} </td>
+              {%for p in i.payment_set.all%}
+                <td> {{p.payment_method}}</td>
+              {%endfor%}
+              <td>{{i.reservation_status}}</td>
+            </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+{% include 'footer.html' %}

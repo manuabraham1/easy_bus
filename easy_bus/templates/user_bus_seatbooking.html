@@ -1,0 +1,44 @@
+{% include 'user_header.html' %}
+<div class="confirmation-container">
+    <h1>Booking Confirmation</h1>
+
+    <p>Your booking has been confirmed. Please see the details below:</p>
+
+    <div class="booking-details">
+      <h2>Booking Details</h2>
+      <p>Trip: <b> {{from_stop.place.place_name}}-{{to_stop.place.place_name}}</b></p>
+      <p>Date: <b>{{from_stop.trip.trip_date}}</b></p>
+      <p>Number of Seats: <b>{{num_seat}}</b> {%if num_seat == '7' %} <font color="green"><b> (1 seat is free of cost)</b></font> {%endif%}</p>
+      
+      <p>Total Amount: <b> {{total_fare}}</b></p>
+      <!-- Add more booking details as needed -->
+    </div>
+
+    <div class="payment-methods">
+    <form action="user_payment_successful" method="post">
+      <h2>Select Payment Method</h2>
+      <select name="payment-methods" required>
+        <option value="" selected disabled>Select Payment Method</option>
+        <option value="credit card">Credit Card</option>
+        <option value="debit card">Debit Card</option>
+        <option value="upi">UPI</option>
+      </select> <br><br>
+      <input type="hidden" name="from_stop" value="{{from_stop.id}}">
+      <input type="hidden" name="to_stop" value="{{to_stop.id}}">
+      <input type="hidden" name="num_stop" value="{{num_stop}}">
+      <input type="hidden" name="total_fare" value="{{total_fare}}">
+      <input type="hidden" name="num_seat" value="{{num_seat}}">
+      <button type="submit">Proceed Payment</button>
+    </form>
+      <!-- Add more payment methods as needed -->
+    </div>
+    
+    <div class="confirmation-message">
+      <p>Thank you for choosing our service. Your payment is required to complete the booking.</p>
+    </div>
+
+    <div class="support-message">
+      <p>If you have any questions or need assistance, please contact our customer support.</p>
+    </div>
+  </div>
+{% include 'footer.html'%}

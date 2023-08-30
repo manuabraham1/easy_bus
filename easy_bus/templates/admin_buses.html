@@ -1,0 +1,30 @@
+{% include 'admin_header.html' %}
+
+<h1>Buses List</h1>
+  <table align="center">
+    <thead>
+      <tr>
+        <th>Bus ID </th>
+        <th>Bus Name</th>
+        <th>Regisration Number</th>
+        <th>Seat Capacity</th>
+        <th>Fare Rate </th>
+        <th>Station Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Populate the table rows with customer data -->
+      {%for i in bus%}
+      <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.bus_name}}</td>
+        <td>{{i.registration_number}}</td>
+        <td>{{i.default_seat_count}}</td>
+        <td>Rs. {{i.fare_rate}}</td>
+        <td>{{i.station.place.place_name}}</td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+
+  {% include 'footer.html' %}

@@ -1,0 +1,29 @@
+{% include 'user_header.html'%}
+    <h2> Complaints/Feeback </h2>
+    <div class="feedback-container">
+        <form action="" method="post">
+              <div class="form-login">
+                <label for="message">Message:</label>
+                <textarea id="textbox" name="message" rows="5" required></textarea>
+              </div>
+              <div class="form-login">
+                <button type="submit">Submit</button>
+              </div>
+        </form>
+    </div>
+    <div class="complaint-container">
+      <h3> Complaint History </h3>
+      <table border="1px">
+        <th> Complaint Date</th>
+        <th> Description </th>
+        <th> Reply </th>
+        {% for i in complaint %}
+        <tr> 
+            <td> {{i.complaint_date}}</td>
+            <td> {{i.description}}</td>
+            <td> {{i.reply}} </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+{% include 'footer.html'%}

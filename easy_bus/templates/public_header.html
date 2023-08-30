@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/header_styles.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/styles.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+          <div class="logo-container">
+            <a href="/" class="logo-link"> <img src="{%static '/images/logo.png'%}" alt="" width="150" height="150" style="display: inline-block;" class="logo-img">
+            <h1 class="logo" style="color: white;">EASY BUS</h1> </a>
+          </div>
+          <div class="link-container">
+            <nav>
+              <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="login"> LOGIN</a></li>
+                <li><a href="registration"> REGISTER FOR PASSENGERS</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>

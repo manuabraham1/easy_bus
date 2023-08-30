@@ -1,0 +1,54 @@
+{% include 'stationmaster_header.html' %}
+<div class="station-info">
+    <h2>Manage Routes</h2>
+    <div class="route-list">
+      <table class='station-table'>
+        <thead>
+          <tr>
+            <th>Route ID</th>
+            <th>Route Name</th>
+            <th>Starting Place</th>
+            <th>Ending Place</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Loop through the routes and populate the table rows -->
+          {% for route in routes %}
+          <tr>
+            <td>{{ route.id }}</td>
+            <td>{{ route.route_name }}</td>
+            <td>{{ route.starting_place.place_name }}</td>
+            <td>{{ route.ending_place.place_name }}</td>
+            <td>
+              <a href="delete_route/{{route.id}}">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="add-route">
+      <h3>Add New Route</h3>
+      <form method="POST">
+        Route Name: <input type="text" id="route_name" name="route_name" required>
+        Starting Place: 
+        <select name="starting_place" id="">
+          <option value="" selected disabled>Select Starting Place</option>
+          {%for i in endplace%}
+            <option value="{{i.id}}">{{i.place_name}}</option>
+          {%endfor%}
+        </select>  <br><br>
+        Ending Place:
+        <select name="ending_place" id="">
+          <option value="" selected disabled>Select Ending Place</option>
+          {%for i in endplace%}
+            <option value="{{i.id}}">{{i.place_name}}</option>
+          {%endfor%}
+        </select> 
+        <br> <br><button type="submit">Add Route</button>
+      </form>
+    </div>
+</div>
+
+{% include 'footer.html'%}

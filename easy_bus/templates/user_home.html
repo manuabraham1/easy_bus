@@ -1,0 +1,87 @@
+{% load mathfilters %}
+
+{% include 'user_header.html'%}
+<h2 class="user-name"> Welcome {{name}} </h2>
+<section class="main-container">
+  {% if s%}
+        <div class="search-results">
+          <!-- Display search results here -->
+          <h1>Search Results</h1>
+          <ul>
+            {%for i in trip%}
+                <li>
+                  <h4>{{i.bus.bus_name}} ({{i.bus.registration_number}})</h4>
+                {%for s in stop%}
+                  
+                  {%if s.place == og and s.trip == i%}
+                        
+                    <p>Departure: {{s.place.place_name}}--{{ s.time }}</p>
+                    
+                  {%elif s.place == dt and s.trip == i%}
+                
+                    <p>Arrival: {{s.place.place_name}}--{{ s.time }}</p>
+                  
+                  {%endif%}  
+                {%endfor%} 
+                
+                <p>Seat Available: {{i.bus.seat_count}}</p>
+                <p>Fare Rate: Rs. {{i.fare_difference|add:i.bus.fare_rate}}</p>
+                      <form method="post" action="user_bus_booking">
+                            {%for s in stop%}
+                            
+                                {%if s.place == og and s.trip == i%}
+                                      
+                                  <input type="hidden" name="from_stop" value="{{s.id}}">
+                                  
+                                {%elif s.place == dt and s.trip == i%}
+                              
+                                  <input type="hidden" name="to_stop" value="{{s.id}}">
+                            
+                                {%endif%}
+                              {%endfor%}
+                            <input type="hidden" name="fare_rate" value="{{ i.fare_difference|add:i.bus.fare_rate }}">
+                            {%if i.bus.seat_count == '0' %}
+                                <font color="red">Booking Full</font>
+                                 
+                            {%else%}
+                                <input type="submit" value="Book Now">
+                            {%endif%}
+                      </form>
+                </li>
+            {%endfor%}
+            <!-- Add more search results here -->
+          </ul>
+        </div>
+    {%else%}
+    <h2>Find Buses Between Stops</h3>
+      <form id="searchForm" method="post">
+        <div class="form-login">
+          <label for="origin">Origin:</label>
+          <input type="text"  name="origin" list="origin" required>
+            <datalist id="origin">
+              {% for i in place %}
+              <option value="{{i.id}}"> {{i.place_name}}</option>
+              {% endfor %}
+            </datalist>
+        </div>
+        <div class="form-login">
+          <label for="destination">Destination:</label>
+          <input type="text" name="destination" list="destination" required>
+          <datalist id="destination">
+            {% for i in place %}
+            <option value="{{i.id}}"> {{i.place_name}}</option>
+            {% endfor %}
+          </datalist>
+        </div>
+        <div class="form-login">
+          <label for="date">Date:</label>
+          <input type="date" id="busdate" name="busdate" required>
+        </div>
+        <div class="form-login">
+          <button type="submit" class="login-button"> Search Bus</button>
+        </div>
+      </form>
+    
+    {%endif%}
+  </section>
+{% include 'footer.html'%}

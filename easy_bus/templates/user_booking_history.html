@@ -1,0 +1,50 @@
+{% load tz %}
+
+{% include 'user_header.html' %}
+
+<div class="container">
+    <h1>Booking History</h1>
+
+    <div class="confirmation-container">
+    {%if res%}
+        {%for i in resev%}
+        <div class="booking-item">
+            <h2>Booking ID: {{i.id}}</h2>
+            <p>Customer Name: {{i.cust1}} {{i.cust2}} </p>
+            <p>Trip: {{i.trip}}</p>
+            {% comment %} <p>Trip Date: {{i.trip.trip_date}}{% with i.trip.trip_date|date:"Y-m-d" as date_obj %}
+                      {{ date_obj|date:"d-m-Y" }}
+                        {% endwith %}</p> {% endcomment %}
+            <p>Trip Date: {{i.trip_date_formatted}}
+            <p>Bus Name: {{i.bus_name}} ({{i.bus_reg}}) </p>
+            <p>Source: {{i.source}}</p>
+            <p>Destination: {{i.destination}}</p>
+            <p>Number of Seats: {{i.no_of_seat}}</p>
+            <p>Total Fare: {{i.total_fare}}</p>
+            <p>Status: <span class="status">Confirmed</span></p>
+            
+            {%if i.trip_status == 'departed'%}
+              
+                <p><a href="http://www.google.com/maps?q={{i.lati}},{{i.longi}}">Track Your Bus</a></p>
+                <p>Distance away from your Source: {{i.distance2}}kms Estimated Duration:{{i.hduration2}}hrs and {{i.mduration2}}minutes</p>
+                <p>Distance away from your Destination: {{i.distance1}}kms Estimated Duration:{{i.hduration1}}hrs and {{i.mduration1}}minutes</p>
+            
+            {%elif i.trip_status == 'scheduled'%}  
+                <p> <a href="user_booking_cancel/{{i.id}}">Cancel the Booking</a> (N.B: While cancelling the booking Rs.10 will be deducted as cancellation charge)</p>
+            {%elif i.trip_status == 'completed'%}
+                <p>Trip Completed </p>
+            {%endif%}
+
+          
+        </div>
+        {%endfor%}
+
+      <!-- Add more booking items as needed -->
+    </div>
+    {%else%}
+        <div class="no-bookings">
+        <p>No bookings found.</p>
+        </div>
+    {%endif%}
+  </div>
+{% include 'footer.html' %}

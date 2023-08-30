@@ -1,0 +1,102 @@
+{% include 'admin_header.html' %}
+
+
+<h1>Manage Stations</h1>
+{%if stations%}
+<table class="station-table">
+    <tr>
+      <th>ID</th>
+      <th>Station Place Name</th>
+      <th>Station Master</th>
+      <th>Station Master Phone No.</th>
+    </tr>
+    <tr>
+        <td>{{stations.id}}</td>
+        <td>{{stations.place.place_name}}</td>
+        <td>{{stations.stationmaster.first_name}} {{stations.stationmaster.last_name}}</td>
+        <td>{{stations.stationmaster.phone}}</td>
+    </tr>
+</table>
+    <form action="" method="post">
+    <br>    Station Place Name: {{stations.place.place_name}} <br> <br>
+        Station Master: {%if remainstationmaster%}
+                <select name="station-master">
+                    {%for i in remainstationmaster%}
+                    <option value="{{i.id}}">{{i.first_name}} {{i.last_name}}</option>
+                    {%endfor%}
+                </select>
+                {%else%}
+                (No station Master) <br> <br>
+                {%endif%}
+                <br><br><input type="submit" value="SAVE" name="station-submit">
+    </form>
+    <br><a href="/admin_stations">If you don't want to change press here to go back</a>
+{%else%}
+    <div class="employee-page" id="station-div"> 
+    <table class="station-table">
+      <tr>
+        <th>ID</th>
+        <th>Station Place Name</th>
+        <th>Station Master</th>
+        <th>Station Master Phone No.</th>
+        <th>Actions</th>
+      </tr>
+      {%for i in station%}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.place.place_name}}</td>
+            <td>{{i.stationmaster.first_name}} {{i.stationmaster.last_name}}</td>
+            <td>{{i.stationmaster.phone}}</td>
+            <td>
+            <button><a href="updt_adminstations/{{i.id}}">Edit</a></button>
+            <button><a href="delete_adminstations/{{i.id}}">Delete</a></button>
+            </td>
+        </tr>
+      {%endfor%}
+      <!-- Additional rows for other stations -->
+    </table>
+
+    
+    <button id="add-station-btn">Add New Station</button>
+</div>
+    <div id="add-station-form" class="hidden">
+        <!-- Form fields for adding a new station -->
+        <form method="post">
+            <br>
+            Station Place Name: {%if remainplace%}
+                                    <select name="station-place">
+                                        {%for i in remainplace%}
+                                        <option value="{{i.id}}">{{i.place_name}}</option>
+                                        {%endfor%}
+                                    </select> <br><br>
+                                {%else%}
+                                    (No Places to Add,go to Manage Places and add places)
+                                {%endif%} <br>
+            Station Master: {%if remainstationmaster%}
+                                <select name="station-master">
+                                    
+                                        {%for i in remainstationmaster%}
+                                        <option value="{{i.id}}">{{i.first_name}} {{i.last_name}}</option>
+                                        {%endfor%}
+                                    {%else%}
+                                        (No station Master) <br> <br>
+                                    {%endif%}
+                                </select> <br><br>
+            {%if remainplace%}
+                <button id="save-station-btn">Save</button>
+            {%endif%}
+        </form>
+    </div>
+{%endif%}
+<script>
+    document.getElementById("add-station-btn").addEventListener("click", function() {
+        
+        var div=document.getElementById("station-div");
+        div.style.display="none";
+
+        var addStationForm = document.getElementById("add-station-form");
+        console.log(addStationForm)
+        addStationForm.classList.remove("hidden");
+      });
+</script>
+{% include 'footer.html' %}
